@@ -20,7 +20,7 @@ public class TempadTeleporter implements ITeleporter {
     @Nullable
     @Override
     public PortalInfo getPortalInfo(Entity entity, ServerLevel destWorld, Function<ServerLevel, PortalInfo> defaultPortalInfo) {
-        return new PortalInfo(Vec3.atCenterOf(this.position), entity.getDeltaMovement(), entity.getYRot(), entity.getXRot());
+        return new PortalInfo(Vec3.atCenterOf(this.position), entity.getDeltaMovement(), entity.yRot, entity.xRot);
     }
 
     @Override

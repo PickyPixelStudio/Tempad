@@ -5,7 +5,7 @@ import net.minecraft.resources.ResourceLocation;
 
 import static me.codexadrian.tempad.Constants.MODID;
 
-public class FabricBlurReloader extends BlurReloader implements IdentifiableResourceReloadListener {
+public class FabricTempadReloader extends TempadReloader implements IdentifiableResourceReloadListener {
 
     @Override
     public ResourceLocation getFabricId() {

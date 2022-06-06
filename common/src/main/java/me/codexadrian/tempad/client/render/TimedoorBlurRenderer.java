@@ -6,7 +6,6 @@ import com.mojang.blaze3d.shaders.AbstractUniform;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import me.codexadrian.tempad.BlurReloader;
 import me.codexadrian.tempad.entity.TimedoorEntity;
 import me.codexadrian.tempad.platform.Services;
 import net.minecraft.client.Camera;
@@ -25,7 +24,7 @@ public class TimedoorBlurRenderer {
     public static void renderBlur(float deltaTime, PoseStack poseStack, Camera camera) {
         Minecraft minecraft = Minecraft.getInstance();
         RenderTarget renderTexture = minecraft.getMainRenderTarget();
-        RenderTarget blurRenderTarget = Services.SHADERS.getBlurReloader().getRenderTarget();
+        RenderTarget blurRenderTarget = Services.SHADERS.getTempadReloader().getRenderTarget();
         if (blurRenderTarget == null) return;
 
         //blurRenderTarget.clear(false);
@@ -62,7 +61,7 @@ public class TimedoorBlurRenderer {
             renderTexture.bindWrite(false);
         });
 
-        RenderSystem.runAsFancy(() -> Services.SHADERS.getBlurReloader().getTimedoorBlur().process(deltaTime));
+        RenderSystem.runAsFancy(() -> Services.SHADERS.getTempadReloader().getTimedoorBlur().process(deltaTime));
         renderTexture.bindWrite(false);
     }
 

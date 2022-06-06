@@ -1,6 +1,6 @@
 package me.codexadrian.tempad.platform;
 
-import me.codexadrian.tempad.BlurReloader;
+import me.codexadrian.tempad.TempadReloader;
 import me.codexadrian.tempad.ForgeTempadClient;
 import me.codexadrian.tempad.TimedoorBlurRenderType;
 import me.codexadrian.tempad.platform.services.IShaderHelper;
@@ -34,7 +34,7 @@ public class ForgeShaderHelper implements IShaderHelper {
     }
 
     @Override
-    public BlurReloader getBlurReloader() {
-        return ForgeTempadClient.BLUR_RELOADER;
+    public TempadReloader getTempadReloader() {
+        return ForgeTempadClient.INSTANCE;
     }
 }

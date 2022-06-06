@@ -1,0 +1,31 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Minecraft Client (:fabric)",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/run",
+      "console": "internalConsole",
+      "stopOnEntry": false,
+      "mainClass": "dev.architectury.transformer.TransformerRuntime",
+      "vmArgs": "-XX:+ShowCodeDetailsInExceptionMessages -Dfabric.dli.config\u003d/Users/codexadrian/Documents/Github/Tempad/fabric/.gradle/loom-cache/launch.cfg -Dfabric.dli.env\u003dclient -XstartOnFirstThread -Dfabric.dli.main\u003dnet.fabricmc.loader.launch.knot.KnotClient -Darchitectury.main.class\u003d/Users/codexadrian/Documents/Github/Tempad/fabric/.gradle/architectury/.main_class -Darchitectury.runtime.transformer\u003d/Users/codexadrian/Documents/Github/Tempad/fabric/.gradle/architectury/.transforms -Darchitectury.properties\u003d/Users/codexadrian/Documents/Github/Tempad/fabric/.gradle/architectury/.properties -Djdk.attach.allowAttachSelf\u003dtrue -javaagent:/Users/codexadrian/Documents/Github/Tempad/.gradle/architectury/architectury-transformer-agent.jar",
+      "args": "",
+      "env": {},
+      "projectName": ":fabric"
+    },
+    {
+      "type": "java",
+      "name": "Minecraft Server (:fabric)",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/run",
+      "console": "internalConsole",
+      "stopOnEntry": false,
+      "mainClass": "dev.architectury.transformer.TransformerRuntime",
+      "vmArgs": "-XX:+ShowCodeDetailsInExceptionMessages -Dfabric.dli.config\u003d/Users/codexadrian/Documents/Github/Tempad/fabric/.gradle/loom-cache/launch.cfg -Dfabric.dli.env\u003dserver -Dfabric.dli.main\u003dnet.fabricmc.loader.launch.knot.KnotServer -Darchitectury.main.class\u003d/Users/codexadrian/Documents/Github/Tempad/fabric/.gradle/architectury/.main_class -Darchitectury.runtime.transformer\u003d/Users/codexadrian/Documents/Github/Tempad/fabric/.gradle/architectury/.transforms -Darchitectury.properties\u003d/Users/codexadrian/Documents/Github/Tempad/fabric/.gradle/architectury/.properties -Djdk.attach.allowAttachSelf\u003dtrue -javaagent:/Users/codexadrian/Documents/Github/Tempad/.gradle/architectury/architectury-transformer-agent.jar",
+      "args": "nogui",
+      "env": {},
+      "projectName": ":fabric"
+    }
+  ]
+}

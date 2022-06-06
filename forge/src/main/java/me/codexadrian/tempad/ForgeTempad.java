@@ -37,7 +37,7 @@ public class ForgeTempad {
         NetworkHandler.register();
         bus.addListener(ForgeTempad::onClientSetup);
         MinecraftForge.EVENT_BUS.register(this);
-        DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> ForgeTempadClient::registerBlurReloader);
+        DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> ForgeTempadClient::registerTempadReloader);
         Tempad.init();
     }
 

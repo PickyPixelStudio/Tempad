@@ -1,29 +1,29 @@
 package me.codexadrian.tempad.platform;
 
-import me.codexadrian.tempad.BlurReloader;
 import me.codexadrian.tempad.FabricTempadClient;
+import me.codexadrian.tempad.TempadReloader;
 import me.codexadrian.tempad.platform.services.IShaderHelper;
+import net.minecraft.client.renderer.EffectInstance;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.ShaderInstance;
 
 public class FabricShaderHelper implements IShaderHelper {
     @Override
-    public ShaderInstance getTimedoorShader() {
+    public EffectInstance getTimedoorShader() {
         return FabricTempadClient.timedoorShader;
     }
 
     @Override
-    public void setTimeDoorShader(ShaderInstance shader) {
+    public void setTimeDoorShader(EffectInstance shader) {
         FabricTempadClient.timedoorShader = shader;
     }
 
     @Override
-    public ShaderInstance getTimedoorWhiteShader() {
+    public EffectInstance getTimedoorWhiteShader() {
         return FabricTempadClient.timedoorWhiteShader;
     }
 
     @Override
-    public void setTimedoorWhiteShader(ShaderInstance shader) {
+    public void setTimedoorWhiteShader(EffectInstance shader) {
         FabricTempadClient.timedoorWhiteShader = shader;
     }
 
@@ -33,7 +33,7 @@ public class FabricShaderHelper implements IShaderHelper {
     }
 
     @Override
-    public BlurReloader getBlurReloader() {
+    public TempadReloader getTempadReloader() {
         return FabricTempadClient.INSTANCE;
     }
 }

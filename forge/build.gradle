@@ -25,13 +25,7 @@ dependencies {
     }
 }
 
-processResources {
-    inputs.property "version", project.version
 
-    filesMatching("META-INF/mods.toml") {
-        expand "version": project.version
-    }
-}
 
 shadowJar {
     exclude "fabric.mod.json"

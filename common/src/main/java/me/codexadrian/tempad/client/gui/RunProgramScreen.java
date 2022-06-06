@@ -3,7 +3,6 @@ package me.codexadrian.tempad.client.gui;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import me.codexadrian.tempad.Constants;
-import me.codexadrian.tempad.Tempad;
 import me.codexadrian.tempad.client.widgets.TextButton;
 import me.codexadrian.tempad.client.widgets.TimedoorSprite;
 import me.codexadrian.tempad.network.messages.DeleteLocationPacket;
@@ -23,9 +22,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
 
-import java.time.Duration;
 import java.time.Instant;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

@@ -1,6 +1,6 @@
 package me.codexadrian.tempad.platform.services;
 
-import me.codexadrian.tempad.BlurReloader;
+import me.codexadrian.tempad.TempadReloader;
 import net.minecraft.client.renderer.EffectInstance;
 import net.minecraft.client.renderer.RenderType;
 
@@ -16,5 +16,5 @@ public interface IShaderHelper {
 
     RenderType getTimedoorShaderType();
 
-    BlurReloader getBlurReloader();
+    TempadReloader getTempadReloader();
 }

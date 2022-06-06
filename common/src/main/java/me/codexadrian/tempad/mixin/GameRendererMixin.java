@@ -13,7 +13,7 @@ public class GameRendererMixin {
 
     @Inject(method = "resize", at = @At("TAIL"))
     public void resize(int i, int j, CallbackInfo ci) {
-        PostChain timedoorBlur = Services.SHADERS.getBlurReloader().getTimedoorBlur();
+        PostChain timedoorBlur = Services.SHADERS.getTempadReloader().getTimedoorBlur();
         if (timedoorBlur != null) timedoorBlur.resize(i, j);
     }
 }

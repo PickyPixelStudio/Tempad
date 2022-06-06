@@ -6,8 +6,8 @@ import me.codexadrian.tempad.network.handlers.IPacket;
 import me.codexadrian.tempad.platform.services.INetworkHelper;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraftforge.network.NetworkRegistry;
-import net.minecraftforge.network.simple.SimpleChannel;
+import net.minecraftforge.fml.network.NetworkRegistry;
+import net.minecraftforge.fml.network.simple.SimpleChannel;
 
 public class ForgeNetworkHelper implements INetworkHelper {
     private static int id = 0;
