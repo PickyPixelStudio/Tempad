@@ -35,13 +35,13 @@ public class TempadScreen extends Screen {
     protected void init() {
         super.init();
         int offset = 3;
-        addRenderableWidget(new TextButton((width - WIDTH) / 2 + 16 * 17 + offset, (height - HEIGHT) / 2 + 16 * 8 + offset, 12, new TranslatableComponent("gui." + Constants.MODID + ".options"), color, button -> minecraft.setScreen(new OptionsScreen(color, hand))));
+        addWidget(new TextButton((width - WIDTH) / 2 + 16 * 17 + offset, (height - HEIGHT) / 2 + 16 * 8 + offset, 12, new TranslatableComponent("gui." + Constants.MODID + ".options"), color, button -> minecraft.setScreen(new OptionsScreen(color, hand))));
 
-        addRenderableWidget(new TextButton((width - WIDTH) / 2 + 16 * 17 + offset, (height - HEIGHT) / 2 + 16 * 9 + offset, 12, new TranslatableComponent("gui." + Constants.MODID + ".run_program"), color, button -> {
+        addWidget(new TextButton((width - WIDTH) / 2 + 16 * 17 + offset, (height - HEIGHT) / 2 + 16 * 9 + offset, 12, new TranslatableComponent("gui." + Constants.MODID + ".run_program"), color, button -> {
             minecraft.setScreen(new RunProgramScreen(color, this.hand));
         }));
 
-        addRenderableWidget(new TextButton((width - WIDTH) / 2 + 16 * 17 + offset, (height - HEIGHT) / 2 + 16 * 10 + offset, 12, new TranslatableComponent("gui." + Constants.MODID + ".wiki"), color, button -> {
+        addWidget(new TextButton((width - WIDTH) / 2 + 16 * 17 + offset, (height - HEIGHT) / 2 + 16 * 10 + offset, 12, new TranslatableComponent("gui." + Constants.MODID + ".wiki"), color, button -> {
         }));
     }
 
@@ -51,16 +51,16 @@ public class TempadScreen extends Screen {
     }
 
     private void renderGridBackground(PoseStack poseStack, float red, float green, float blue) {
-        RenderSystem.setShaderTexture(0, GRID);
-        RenderSystem.setShaderColor(red * 0.5f, green * 0.5f, blue * 0.5f, 1f);
+        minecraft.getTextureManager().bind(GRID);
+        RenderSystem.color4f(red * 0.5f, green * 0.5f, blue * 0.5f, 1f);
         blit(poseStack, (width - WIDTH) / 2, (height - HEIGHT) / 2, WIDTH, HEIGHT, 0, 0, WIDTH, HEIGHT, 16, 16);
     }
 
     private void renderTvaLogo(PoseStack poseStack, float red, float green, float blue) {
         int tvaWidth = WIDTH / 2 + 16;
         int tvaHeight = HEIGHT / 2;
-        RenderSystem.setShaderTexture(0, TVA_LOGO);
-        RenderSystem.setShaderColor(red, green, blue, 1f);
+        minecraft.getTextureManager().bind(TVA_LOGO);
+        RenderSystem.color4f(red, green, blue, 1f);
         blit(poseStack, width / 2 - tvaWidth + 24, (height - tvaHeight) / 2, tvaWidth, tvaHeight, 0, 0, 32, 16, 32, 16);
     }
 

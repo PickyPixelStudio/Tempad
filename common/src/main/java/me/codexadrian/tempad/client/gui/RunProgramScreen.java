@@ -91,7 +91,7 @@ public class RunProgramScreen extends Screen {
             for(LocationData data : shownLocationData) {
                 var locationButton = new TextButton(x, y, 12, new TextComponent(data.getName()), color, (button) -> locationButtonOnPress(data));
                 this.displayedLocations.add(locationButton);
-                addRenderableWidget(locationButton);
+                addWidget(locationButton);
                 y+=16;
             }
         }
@@ -100,7 +100,7 @@ public class RunProgramScreen extends Screen {
           minecraft.setScreen(new NewLocationScreen(color, hand));
         });
 
-        addRenderableWidget(addLocation);
+        addWidget(addLocation);
     }
 
     private void locationButtonOnPress(LocationData data) {
@@ -136,13 +136,13 @@ public class RunProgramScreen extends Screen {
     public void tick() {
         super.tick();
         if(this.interfaceNeedsReload) {
-            displayedInterfaceButtons.forEach(this::removeWidget);
+            displayedInterfaceButtons.forEach(children::remove);
             displayedInterfaceButtons.clear();
             displayedInterfaceButtons.addAll(upNextButtons);
             upNextButtons.clear();
-            displayedInterfaceButtons.forEach(this::addRenderableWidget);
-            removeWidget(timedoorSprite);
-            addRenderableWidget(timedoorSprite);
+            displayedInterfaceButtons.forEach(this::addWidget);
+            children.remove(timedoorSprite);
+            addWidget(timedoorSprite);
             this.interfaceNeedsReload = false;
         }
         int x = (width - WIDTH) / 2 + 3 + 16 * 15;
@@ -150,7 +150,7 @@ public class RunProgramScreen extends Screen {
         if(this.listNeedsReload) {
 
             for(TextButton button : displayedLocations) {
-                removeWidget(button);
+                children.remove(button);
             }
             displayedLocations = new ArrayList<>();
             int offset = Math.min(mouseMovement, listSize - 12);
@@ -159,7 +159,7 @@ public class RunProgramScreen extends Screen {
                 displayedLocations.add(new TextButton(x, y, 12, new TextComponent(data.getName()), color, (button -> locationButtonOnPress(data))));
                 y+=16;
             }
-            displayedLocations.forEach(this::addRenderableWidget);
+            displayedLocations.forEach(this::addWidget);
             this.listNeedsReload = false;
         }
     }
@@ -170,8 +170,8 @@ public class RunProgramScreen extends Screen {
     }
 
     private void renderGridBackground(PoseStack poseStack, float red, float green, float blue) {
-        RenderSystem.setShaderTexture(0, GRID);
-        RenderSystem.setShaderColor(red * 0.5f, green * 0.5f, blue * 0.5f, 1f);
+        minecraft.getTextureManager().bind(GRID);
+        RenderSystem.color4f(red * 0.5f, green * 0.5f, blue * 0.5f, 1f);
         blit(poseStack, (width - WIDTH) / 2, (height - HEIGHT) / 2, WIDTH, HEIGHT, 0, 0, WIDTH, HEIGHT, 16, 16);
     }
 

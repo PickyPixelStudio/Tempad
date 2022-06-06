@@ -4,27 +4,27 @@ import me.codexadrian.tempad.BlurReloader;
 import me.codexadrian.tempad.ForgeTempadClient;
 import me.codexadrian.tempad.TimedoorBlurRenderType;
 import me.codexadrian.tempad.platform.services.IShaderHelper;
+import net.minecraft.client.renderer.EffectInstance;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.ShaderInstance;
 
 public class ForgeShaderHelper implements IShaderHelper {
     @Override
-    public ShaderInstance getTimedoorShader() {
+    public EffectInstance getTimedoorShader() {
         return ForgeTempadClient.timedoorShader;
     }
 
     @Override
-    public void setTimeDoorShader(ShaderInstance shader) {
+    public void setTimeDoorShader(EffectInstance shader) {
         ForgeTempadClient.timedoorShader = shader;
     }
 
     @Override
-    public ShaderInstance getTimedoorWhiteShader() {
+    public EffectInstance getTimedoorWhiteShader() {
         return ForgeTempadClient.timedoorWhiteShader;
     }
 
     @Override
-    public void setTimedoorWhiteShader(ShaderInstance shader) {
+    public void setTimedoorWhiteShader(EffectInstance shader) {
         ForgeTempadClient.timedoorWhiteShader = shader;
     }
 

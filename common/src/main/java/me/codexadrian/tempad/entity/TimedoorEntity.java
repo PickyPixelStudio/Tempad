@@ -50,7 +50,8 @@ public class TimedoorEntity extends Entity {
 
     @Override
     protected void readAdditionalSaveData(CompoundTag compoundTag) {
-        if (compoundTag.contains("location")) this.setLocation(LocationData.fromTag(compoundTag.getCompound("location")));
+        if (compoundTag.contains("location"))
+            this.setLocation(LocationData.fromTag(compoundTag.getCompound("location")));
         this.setClosingTime(compoundTag.getInt("closing_time"));
         if (compoundTag.hasUUID("owner")) this.setOwner(compoundTag.getUUID("owner"));
         this.setColor(compoundTag.getInt("outline_color"));
@@ -65,7 +66,7 @@ public class TimedoorEntity extends Entity {
             compoundTag.put("location", locationData.toTag());
         }
         compoundTag.putInt("closing_time", getClosingTime());
-        if(owner != null) compoundTag.putUUID("owner", getOwner());
+        if (owner != null) compoundTag.putUUID("owner", getOwner());
         compoundTag.putInt("outline_color", getColor());
         if (getLinkedPortalId() != null) {
             compoundTag.putUUID("linked_portal", getLinkedPortalId());
@@ -124,19 +125,15 @@ public class TimedoorEntity extends Entity {
                     recipientPortal.setLinkedPortalId(this.getUUID());
                     var position = getLocation().getBlockPos().relative(this.getDirection(), 1);
                     recipientPortal.setPos(position.getX() + 0.5, position.getY(), position.getZ() + 0.5);
-                    recipientPortal.setYRot(this.getYRot());
+                    recipientPortal.yRot = this.yRot;
                     this.level.addFreshEntity(recipientPortal);
                 }
             }
         }
-        if (this.tickCount >
-
-                getClosingTime() + ANIMATION_LENGTH &&
-
-                getClosingTime() != -1) {
+        if (this.tickCount > getClosingTime() + ANIMATION_LENGTH && getClosingTime() != -1) {
             if (this.getLinkedPortalEntity() != null) this.getLinkedPortalEntity().setLinkedPortalId(null);
             this.setLinkedPortalId(null);
-            this.discard();
+            this.remove();
         }
 
     }

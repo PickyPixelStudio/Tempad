@@ -1,19 +1,18 @@
 package me.codexadrian.tempad.platform.services;
 
 import me.codexadrian.tempad.BlurReloader;
+import net.minecraft.client.renderer.EffectInstance;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.ShaderInstance;
-import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 
 public interface IShaderHelper {
 
-    ShaderInstance getTimedoorShader();
+    EffectInstance getTimedoorShader();
 
-    void setTimeDoorShader(ShaderInstance shader);
+    void setTimeDoorShader(EffectInstance shader);
 
-    ShaderInstance getTimedoorWhiteShader();
+    EffectInstance getTimedoorWhiteShader();
 
-    void setTimedoorWhiteShader(ShaderInstance shader);
+    void setTimedoorWhiteShader(EffectInstance shader);
 
     RenderType getTimedoorShaderType();
 

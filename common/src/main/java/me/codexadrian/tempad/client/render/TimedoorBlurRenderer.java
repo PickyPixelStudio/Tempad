@@ -54,11 +54,11 @@ public class TimedoorBlurRenderer {
             double entityX = Mth.lerp(deltaTime, entity.xOld, entity.getX());
             double entityY = Mth.lerp(deltaTime, entity.yOld, entity.getY());
             double entityZ = Mth.lerp(deltaTime, entity.zOld, entity.getZ());
-            float entityYaw = Mth.lerp(deltaTime, entity.yRotO, entity.getYRot());
+            float entityYaw = Mth.lerp(deltaTime, entity.yRotO, entity.yRot);
 
             blurRenderTarget.bindWrite(false);
             minecraft.getEntityRenderDispatcher().render(entity, entityX - cameraX, entityY - cameraY, entityZ - cameraZ, entityYaw, deltaTime, poseStack, bufferSource, minecraft.getEntityRenderDispatcher().getPackedLightCoords(entity, deltaTime));
-            bufferSource.endLastBatch();
+            bufferSource.endBatch();
             renderTexture.bindWrite(false);
         });
 

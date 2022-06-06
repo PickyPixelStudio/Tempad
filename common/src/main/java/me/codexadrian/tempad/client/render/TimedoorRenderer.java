@@ -1,5 +1,6 @@
 package me.codexadrian.tempad.client.render;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Matrix4f;
 import com.mojang.math.Vector3f;
@@ -9,16 +10,16 @@ import me.codexadrian.tempad.entity.TimedoorEntity;
 import me.codexadrian.tempad.platform.Services;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.culling.Frustum;
+import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.EntityRenderer;
-import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import org.jetbrains.annotations.NotNull;
 
 public class TimedoorRenderer extends EntityRenderer<TimedoorEntity> {
 
-    public TimedoorRenderer(EntityRendererProvider.Context context) {
-        super(context);
+    public TimedoorRenderer(EntityRenderDispatcher entityRenderDispatcher) {
+        super(entityRenderDispatcher);
     }
 
     @Override
@@ -53,7 +54,7 @@ public class TimedoorRenderer extends EntityRenderer<TimedoorEntity> {
         }
 
         poseStack.pushPose();
-        poseStack.mulPose(Vector3f.YP.rotationDegrees(entity.getYRot()));
+        poseStack.mulPose(Vector3f.YP.rotationDegrees(entity.yRot));
         poseStack.translate(0, 1.15F, 0);
         var model = poseStack.last().pose();
         makeBoxBasedOnPlayerBecauseAshSaidSo(model, multiBufferSource, width, height, depth, light, entity.getColor());
@@ -70,6 +71,7 @@ public class TimedoorRenderer extends EntityRenderer<TimedoorEntity> {
         float xBound = width * 0.5F;
         float yBound = height * 0.5F - .01F;
         float zBound = depth * -0.5F;
+        Services.SHADERS.getTimedoorShader().apply();
         var buffer = multiBufferSource.getBuffer(Services.SHADERS.getTimedoorShaderType());
         //Front
         float red = ((color & 0xFF0000) >> 16) / 255.0f;
@@ -111,6 +113,7 @@ public class TimedoorRenderer extends EntityRenderer<TimedoorEntity> {
         buffer.vertex(model, xBound, -yBound, -zBound).color(red, green, blue, alpha).uv(0, 1).uv2(i).endVertex();
         buffer.vertex(model, xBound, -yBound, zBound).color(red, green, blue, alpha).uv(1, 1).uv2(i).endVertex();
         buffer.vertex(model, xBound, yBound, zBound).color(red, green, blue, alpha).uv(1, 0).uv2(i).endVertex();
+        Services.SHADERS.getTimedoorShader().clear();
     }
 
     @Override

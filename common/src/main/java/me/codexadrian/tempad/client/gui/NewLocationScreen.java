@@ -48,9 +48,9 @@ public class NewLocationScreen extends Screen {
 
         }));
         textField.setTextColor(color);
-        addRenderableWidget(timeDoorSprite);
-        addRenderableWidget(textField);
-        addRenderableWidget(addLocation);
+        addWidget(timeDoorSprite);
+        addWidget(textField);
+        addWidget(addLocation);
     }
 
     private void renderOutline(PoseStack poseStack) {
@@ -59,8 +59,8 @@ public class NewLocationScreen extends Screen {
     }
 
     private void renderGridBackground(PoseStack poseStack, float red, float green, float blue) {
-        RenderSystem.setShaderTexture(0, GRID);
-        RenderSystem.setShaderColor(red * 0.5f, green * 0.5f, blue * 0.5f, 1f);
+        minecraft.getTextureManager().bind(GRID);
+        RenderSystem.color4f(red * 0.5f, green * 0.5f, blue * 0.5f, 1f);
         blit(poseStack, (width - WIDTH) / 2, (height - HEIGHT) / 2, WIDTH, HEIGHT, 0, 0, WIDTH, HEIGHT, 16, 16);
     }
 

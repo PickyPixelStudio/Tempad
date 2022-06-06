@@ -49,7 +49,7 @@ public class TempadItem extends Item {
         var position = player.position();
         var distance = Tempad.getTempadConfig().getDistanceFromPlayer();
         timedoor.setPos(position.x() + dir.getStepX() * distance, position.y(), position.z() + dir.getStepZ() * distance);
-        timedoor.setYRot(dir.getOpposite().toYRot());
+        timedoor.yRot = dir.getOpposite().toYRot();
         player.level.addFreshEntity(timedoor);
     }
 

@@ -48,7 +48,7 @@ public class OptionsScreen extends Screen {
                 TempadClient.getClientConfig().setColor(color);
                 ColorConfig.saveConfig(TempadClient.getClientConfig());
             });
-            addRenderableWidget(button);
+            addWidget(button);
             x += scale + margin;
             if((i+1) % colorPerRow == 0) {
                 x = 0;
@@ -63,8 +63,8 @@ public class OptionsScreen extends Screen {
     }
 
     private void renderGridBackground(PoseStack poseStack, float red, float green, float blue) {
-        RenderSystem.setShaderTexture(0, GRID);
-        RenderSystem.setShaderColor(red * 0.5f, green * 0.5f, blue * 0.5f, 1f);
+        minecraft.getTextureManager().bind(GRID);
+        RenderSystem.color4f(red * 0.5f, green * 0.5f, blue * 0.5f, 1f);
         blit(poseStack, (width - WIDTH) / 2, (height - HEIGHT) / 2, WIDTH, HEIGHT, 0, 0, WIDTH, HEIGHT, 16, 16);
     }
 
@@ -118,7 +118,7 @@ public class OptionsScreen extends Screen {
         @Override
         public void renderButton(PoseStack matrices, int mouseX, int mouseY, float partialTick) {
             matrices.pushPose();
-            RenderSystem.setShaderColor(1, 1, 1, 1);
+            RenderSystem.color4f(1, 1, 1, 1);
             fill(matrices, x - 1, y - 1, x + 1 + width, y + 1 + height, 0xFFFFFFFF);
             fill(matrices, x, y, x + width, y + height, buttonColor);
             matrices.popPose();
