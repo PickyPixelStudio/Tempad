@@ -48,7 +48,7 @@ public class OptionsScreen extends Screen {
                 TempadClient.getClientConfig().setColor(color);
                 ColorConfig.saveConfig(TempadClient.getClientConfig());
             });
-            addWidget(button);
+            addButton(button);
             x += scale + margin;
             if((i+1) % colorPerRow == 0) {
                 x = 0;

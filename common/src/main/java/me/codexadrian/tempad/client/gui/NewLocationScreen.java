@@ -49,8 +49,8 @@ public class NewLocationScreen extends Screen {
         }));
         textField.setTextColor(color);
         addWidget(timeDoorSprite);
-        addWidget(textField);
-        addWidget(addLocation);
+        addButton(textField);
+        addButton(addLocation);
     }
 
     private void renderOutline(PoseStack poseStack) {

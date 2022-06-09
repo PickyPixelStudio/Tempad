@@ -112,11 +112,12 @@ public class TimedoorRenderer extends EntityRenderer<TimedoorEntity> {
         buffer.vertex(model, xBound, -yBound, -zBound).color(red, green, blue, alpha).uv(0, 1).uv2(i).endVertex();
         buffer.vertex(model, xBound, -yBound, zBound).color(red, green, blue, alpha).uv(1, 1).uv2(i).endVertex();
         buffer.vertex(model, xBound, yBound, zBound).color(red, green, blue, alpha).uv(1, 0).uv2(i).endVertex();
+        if(multiBufferSource instanceof MultiBufferSource.BufferSource source) source.endBatch();
         Services.SHADERS.getTimedoorShader().clear();
     }
 
     @Override
     public boolean shouldRender(@NotNull TimedoorEntity entity, @NotNull Frustum frustum, double d, double e, double f) {
-        return Services.PLATFORM.isModLoaded("imm_ptl_core") || !TempadClient.getClientConfig().getIfRenderTimedoor();
+        return !TempadClient.getClientConfig().getIfRenderTimedoor();
     }
 }

@@ -35,13 +35,13 @@ public class TempadScreen extends Screen {
     protected void init() {
         super.init();
         int offset = 3;
-        addWidget(new TextButton((width - WIDTH) / 2 + 16 * 17 + offset, (height - HEIGHT) / 2 + 16 * 8 + offset, 12, new TranslatableComponent("gui." + Constants.MODID + ".options"), color, button -> minecraft.setScreen(new OptionsScreen(color, hand))));
+        addButton(new TextButton((width - WIDTH) / 2 + 16 * 17 + offset, (height - HEIGHT) / 2 + 16 * 8 + offset, 12, new TranslatableComponent("gui." + Constants.MODID + ".options"), color, button -> minecraft.setScreen(new OptionsScreen(color, hand))));
 
-        addWidget(new TextButton((width - WIDTH) / 2 + 16 * 17 + offset, (height - HEIGHT) / 2 + 16 * 9 + offset, 12, new TranslatableComponent("gui." + Constants.MODID + ".run_program"), color, button -> {
+        addButton(new TextButton((width - WIDTH) / 2 + 16 * 17 + offset, (height - HEIGHT) / 2 + 16 * 9 + offset, 12, new TranslatableComponent("gui." + Constants.MODID + ".run_program"), color, button -> {
             minecraft.setScreen(new RunProgramScreen(color, this.hand));
         }));
 
-        addWidget(new TextButton((width - WIDTH) / 2 + 16 * 17 + offset, (height - HEIGHT) / 2 + 16 * 10 + offset, 12, new TranslatableComponent("gui." + Constants.MODID + ".wiki"), color, button -> {
+        addButton(new TextButton((width - WIDTH) / 2 + 16 * 17 + offset, (height - HEIGHT) / 2 + 16 * 10 + offset, 12, new TranslatableComponent("gui." + Constants.MODID + ".wiki"), color, button -> {
         }));
     }
 

@@ -88,7 +88,7 @@ public class RunProgramScreen extends Screen {
             for(LocationData data : shownLocationData) {
                 var locationButton = new TextButton(x, y, 12, new TextComponent(data.getName()), color, (button) -> locationButtonOnPress(data));
                 this.displayedLocations.add(locationButton);
-                addWidget(locationButton);
+                addButton(locationButton);
                 y+=16;
             }
         }
@@ -97,7 +97,7 @@ public class RunProgramScreen extends Screen {
           minecraft.setScreen(new NewLocationScreen(color, hand));
         });
 
-        addWidget(addLocation);
+        addButton(addLocation);
     }
 
     private void locationButtonOnPress(LocationData data) {
@@ -137,7 +137,7 @@ public class RunProgramScreen extends Screen {
             displayedInterfaceButtons.clear();
             displayedInterfaceButtons.addAll(upNextButtons);
             upNextButtons.clear();
-            displayedInterfaceButtons.forEach(this::addWidget);
+            displayedInterfaceButtons.forEach(this::addButton);
             children.remove(timedoorSprite);
             addWidget(timedoorSprite);
             this.interfaceNeedsReload = false;
@@ -156,7 +156,7 @@ public class RunProgramScreen extends Screen {
                 displayedLocations.add(new TextButton(x, y, 12, new TextComponent(data.getName()), color, (button -> locationButtonOnPress(data))));
                 y+=16;
             }
-            displayedLocations.forEach(this::addWidget);
+            displayedLocations.forEach(this::addButton);
             this.listNeedsReload = false;
         }
     }
